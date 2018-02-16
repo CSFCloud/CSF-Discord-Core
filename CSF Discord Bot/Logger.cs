@@ -5,7 +5,12 @@ namespace CSFCloud.DiscordCore {
 
         private static LogLevel LastLogLevel = LogLevel.None;
         private static string Prefix;
+
+#if DEBUG
         private static bool VerboseLogging = true;
+#else
+        private static bool VerboseLogging = false;
+#endif
 
         private static void Echo(LogLevel level, string msg) {
             if (LastLogLevel != level) {
