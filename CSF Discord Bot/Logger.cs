@@ -1,7 +1,7 @@
 ﻿using System;
 
 namespace CSFCloud.DiscordCore {
-    internal static class Logger {
+    public static class Logger {
 
         private static LogLevel LastLogLevel = LogLevel.None;
         private static string Prefix;
