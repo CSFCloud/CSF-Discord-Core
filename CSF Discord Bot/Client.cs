@@ -3,6 +3,7 @@ using CSFCloud.DiscordCore.Rest;
 using CSFCloud.DiscordCore.Socket;
 using CSFCloud.DiscordCore.Socket.Packets;
 using CSFCloud.DiscordCore.Socket.Packets.GatewayPackets;
+using CSFCloud.Utils;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;

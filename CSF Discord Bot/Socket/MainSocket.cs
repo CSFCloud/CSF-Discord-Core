@@ -6,6 +6,7 @@ using CSFCloud.DiscordCore.Management;
 using CSFCloud.DiscordCore.Processors;
 using CSFCloud.DiscordCore.Socket.Packets;
 using CSFCloud.DiscordCore.Socket.Packets.GatewayPackets;
+using CSFCloud.Utils;
 using Newtonsoft.Json.Linq;
 
 namespace CSFCloud.DiscordCore.Socket {

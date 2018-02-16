@@ -1,6 +1,6 @@
-﻿using CSFCloud.DiscordCore.Loopers;
-using CSFCloud.DiscordCore.Management;
+﻿using CSFCloud.DiscordCore.Management;
 using CSFCloud.DiscordCore.Socket.Packets;
+using CSFCloud.Utils;
 using System;
 using System.Collections.Generic;
 using System.Net;

@@ -1,8 +1,8 @@
 ﻿using CSFCloud.DiscordCore.Audio;
-using CSFCloud.DiscordCore.Loopers;
 using CSFCloud.DiscordCore.Management;
 using CSFCloud.DiscordCore.Socket.Packets;
 using CSFCloud.DiscordCore.Socket.Packets.VoicePackets;
+using CSFCloud.Utils;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
