@@ -48,7 +48,9 @@ namespace CSFCloud.DiscordCore.Socket {
 
         public void Disconnect() {
             ClearLoops();
-            client.Abort();
+            try {
+                client.Abort();
+            } catch {}
         }
 
         public async Task Reconnect() {
@@ -92,8 +94,15 @@ namespace CSFCloud.DiscordCore.Socket {
             Logger.Debug($"Receiving...");
 
             do {
+                Logger.Debug("...");
                 var buffer = new byte[1024];
-                result = await client.ReceiveAsync(new ArraySegment<byte>(buffer), CancellationToken.None);
+                try {
+                    result = await client.ReceiveAsync(new ArraySegment<byte>(buffer), CancellationToken.None);
+                } catch (Exception e) {
+                    Logger.Error($"[Receive] ReceiveAsync error: {e.Message} {e.Source}");
+                    Disconnect();
+                    return null;
+                }
                 data += Encoding.UTF8.GetString(buffer, 0, result.Count);
             } while (!result.EndOfMessage && result.Count > 0);
 
