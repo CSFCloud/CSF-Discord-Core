@@ -2,6 +2,14 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.0</TargetFramework>
+	<PackageId>CSFCloud.DiscordBotCore</PackageId>
+	<Title>CSFCloud Discord Bot Core</Title>
+	<Description>Discord Bot frameword</Description>
+	<Version>0.0.1-beta</Version>
+	<Authors>CSFCloud</Authors>
+	<Company>CSFCloud</Company>
+	<PackageIconUrl>https://dashboard.csfcloud.com/img/logo.png</PackageIconUrl>
+	<RepositoryUrl>https://github.com/CSFCloud/CSF-Discord-Core</RepositoryUrl>
   </PropertyGroup>
 
 </Project>
