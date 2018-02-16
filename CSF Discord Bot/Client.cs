@@ -72,5 +72,14 @@ namespace CSFCloud.DiscordCore {
             }
         }
 
+        public bool IsEverythingOK() {
+            foreach (MainSocket ms in shards) {
+                if (!ms.IsOk()) {
+                    return false;
+                }
+            }
+            return true;
+        }
+
     }
 }

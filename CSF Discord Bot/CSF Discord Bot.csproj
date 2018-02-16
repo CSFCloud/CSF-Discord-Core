@@ -5,11 +5,16 @@
 	<PackageId>CSFCloud.DiscordBotCore</PackageId>
 	<Title>CSFCloud Discord Bot Core</Title>
 	<Description>Discord Bot frameword</Description>
-	<Version>0.0.3-beta</Version>
+	<Version>0.0.5-beta</Version>
 	<Authors>CSFCloud</Authors>
 	<Company>CSFCloud</Company>
 	<PackageIconUrl>https://dashboard.csfcloud.com/img/logo.png</PackageIconUrl>
 	<RepositoryUrl>https://github.com/CSFCloud/CSF-Discord-Core</RepositoryUrl>
+	<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+	<PackageProjectUrl>https://github.com/CSFCloud/CSF-Discord-Core</PackageProjectUrl>
+	<PackageLicenseUrl>https://raw.githubusercontent.com/CSFCloud/CSF-Discord-Core/master/LICENSE</PackageLicenseUrl>
+	<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+	<NeutralLanguage>en</NeutralLanguage>
   </PropertyGroup>
 
   <ItemGroup>

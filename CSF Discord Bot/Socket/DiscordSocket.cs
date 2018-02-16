@@ -116,7 +116,7 @@ namespace CSFCloud.DiscordCore.Socket {
         }
 
         public bool IsOk() {
-            return (client.State == WebSocketState.Open);
+            return (client.State == WebSocketState.Open) || (client.State == WebSocketState.Connecting);
         }
 
         protected abstract Task SendHeartBeat();
