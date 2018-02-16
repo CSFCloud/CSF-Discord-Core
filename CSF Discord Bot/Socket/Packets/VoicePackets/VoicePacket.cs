@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace DiscordCore.Socket.Packets.VoicePackets
+namespace CSFCloud.DiscordCore.Socket.Packets.VoicePackets
 {
     class VoicePacket : BasicPacket {
 

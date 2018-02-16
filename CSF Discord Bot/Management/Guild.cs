@@ -1,4 +1,4 @@
-﻿namespace DiscordCore.Management {
+﻿namespace CSFCloud.DiscordCore.Management {
 
     public class Guild {
 

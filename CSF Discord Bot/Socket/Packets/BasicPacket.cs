@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
-namespace DiscordCore.Socket.Packets {
+namespace CSFCloud.DiscordCore.Socket.Packets {
 
     internal abstract class BasicPacket {
 

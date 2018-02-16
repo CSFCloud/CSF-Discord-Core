@@ -1,6 +1,6 @@
-﻿using DiscordCore.Loopers;
-using DiscordCore.Management;
-using DiscordCore.Socket.Packets;
+﻿using CSFCloud.DiscordCore.Loopers;
+using CSFCloud.DiscordCore.Management;
+using CSFCloud.DiscordCore.Socket.Packets;
 using System;
 using System.Collections.Generic;
 using System.Net;
@@ -8,7 +8,7 @@ using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DiscordCore.Audio {
+namespace CSFCloud.DiscordCore.Audio {
 
     internal class AudioStream {
 

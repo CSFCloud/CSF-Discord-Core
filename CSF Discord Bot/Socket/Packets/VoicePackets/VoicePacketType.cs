@@ -1,4 +1,4 @@
-﻿namespace DiscordCore.Socket.Packets.VoicePackets {
+﻿namespace CSFCloud.DiscordCore.Socket.Packets.VoicePackets {
 
     public enum VoicePacketType {
 

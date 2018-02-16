@@ -1,6 +1,6 @@
 ﻿using System.Collections.Specialized;
 
-namespace DiscordCore.Rest {
+namespace CSFCloud.DiscordCore.Rest {
     public class GatewayGetter : RestApi{
 
         public GatewayGetter(string token) : base(token) {

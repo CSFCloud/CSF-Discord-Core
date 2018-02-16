@@ -1,6 +1,6 @@
-﻿using DiscordCore.Management;
+﻿using CSFCloud.DiscordCore.Management;
 
-namespace DiscordCore.Processors {
+namespace CSFCloud.DiscordCore.Processors {
     public abstract class Processor {
 
         protected string token;

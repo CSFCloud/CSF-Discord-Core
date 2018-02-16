@@ -2,7 +2,7 @@
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace DiscordCore.Loopers {
+namespace CSFCloud.DiscordCore.Loopers {
 
     internal class Looper {
 

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace DiscordCore.Management {
+namespace CSFCloud.DiscordCore.Management {
 
     public class VoiceChannelReady {
 

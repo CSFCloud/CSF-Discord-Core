@@ -1,13 +1,13 @@
-﻿using DiscordCore.Processors;
-using DiscordCore.Rest;
-using DiscordCore.Socket;
-using DiscordCore.Socket.Packets;
-using DiscordCore.Socket.Packets.GatewayPackets;
+﻿using CSFCloud.DiscordCore.Processors;
+using CSFCloud.DiscordCore.Rest;
+using CSFCloud.DiscordCore.Socket;
+using CSFCloud.DiscordCore.Socket.Packets;
+using CSFCloud.DiscordCore.Socket.Packets.GatewayPackets;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace DiscordCore {
+namespace CSFCloud.DiscordCore {
     public class Client {
 
         private string token;

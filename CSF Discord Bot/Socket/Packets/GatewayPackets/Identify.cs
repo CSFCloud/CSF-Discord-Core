@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace DiscordCore.Socket.Packets.GatewayPackets {
+namespace CSFCloud.DiscordCore.Socket.Packets.GatewayPackets {
 
     internal class Identify : GatewayPacket {
 

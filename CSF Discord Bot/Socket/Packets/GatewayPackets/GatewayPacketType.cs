@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace DiscordCore.Socket.Packets.GatewayPackets {
+namespace CSFCloud.DiscordCore.Socket.Packets.GatewayPackets {
     internal enum GatewayPacketType {
 
         Dispatch = 0,

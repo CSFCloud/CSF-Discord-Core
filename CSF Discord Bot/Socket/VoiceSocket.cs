@@ -1,13 +1,13 @@
-﻿using DiscordCore.Audio;
-using DiscordCore.Loopers;
-using DiscordCore.Management;
-using DiscordCore.Socket.Packets;
-using DiscordCore.Socket.Packets.VoicePackets;
+﻿using CSFCloud.DiscordCore.Audio;
+using CSFCloud.DiscordCore.Loopers;
+using CSFCloud.DiscordCore.Management;
+using CSFCloud.DiscordCore.Socket.Packets;
+using CSFCloud.DiscordCore.Socket.Packets.VoicePackets;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace DiscordCore.Socket {
+namespace CSFCloud.DiscordCore.Socket {
 
     internal class VoiceSocket : DiscordSocket {
 

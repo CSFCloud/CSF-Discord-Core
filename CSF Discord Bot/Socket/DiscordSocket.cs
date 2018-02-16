@@ -1,6 +1,6 @@
-﻿using DiscordCore.Loopers;
-using DiscordCore.Socket.Packets;
-using DiscordCore.Socket.Packets.GatewayPackets;
+﻿using CSFCloud.DiscordCore.Loopers;
+using CSFCloud.DiscordCore.Socket.Packets;
+using CSFCloud.DiscordCore.Socket.Packets.GatewayPackets;
 using System;
 using System.Collections.Generic;
 using System.Net.WebSockets;
@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace DiscordCore.Socket {
+namespace CSFCloud.DiscordCore.Socket {
     internal abstract class DiscordSocket {
 
         private ClientWebSocket client;

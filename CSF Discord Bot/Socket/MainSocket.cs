@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using DiscordCore.Management;
-using DiscordCore.Processors;
-using DiscordCore.Socket.Packets;
-using DiscordCore.Socket.Packets.GatewayPackets;
+using CSFCloud.DiscordCore.Management;
+using CSFCloud.DiscordCore.Processors;
+using CSFCloud.DiscordCore.Socket.Packets;
+using CSFCloud.DiscordCore.Socket.Packets.GatewayPackets;
 using Newtonsoft.Json.Linq;
 
-namespace DiscordCore.Socket {
+namespace CSFCloud.DiscordCore.Socket {
 
     internal class MainSocket : DiscordSocket {
 

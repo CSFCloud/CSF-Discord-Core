@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Specialized;
 
-namespace DiscordCore.Rest
+namespace CSFCloud.DiscordCore.Rest
 {
     public class MessageCreate : RestApi {
 

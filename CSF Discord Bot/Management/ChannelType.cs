@@ -1,4 +1,4 @@
-﻿namespace DiscordCore.Management {
+﻿namespace CSFCloud.DiscordCore.Management {
 
     public enum ChannelType {
         GUILD_TEXT = 0,
