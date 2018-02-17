@@ -24,6 +24,7 @@ namespace CSFCloud.DiscordCore {
         }
 
         public async void Start() {
+            Logger.Warning("The CSF Discord Bot Core is a really unstable early version!");
             GatewayGetter gg = new GatewayGetter(token);
             try {
                 Logger.Info("Requesting Gateway data...");
