@@ -5,7 +5,7 @@
 	<PackageId>CSFCloud.DiscordBotCore</PackageId>
 	<Title>CSFCloud Discord Bot Core</Title>
 	<Description>Discord Bot frameword</Description>
-	<Version>0.0.6-beta</Version>
+	<Version>0.0.7-beta</Version>
 	<Authors>CSFCloud</Authors>
 	<Company>CSFCloud</Company>
 	<PackageIconUrl>https://dashboard.csfcloud.com/img/logo.png</PackageIconUrl>
