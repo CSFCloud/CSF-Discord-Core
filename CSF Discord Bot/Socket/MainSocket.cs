@@ -40,9 +40,9 @@ namespace CSFCloud.DiscordCore.Socket {
 
             if (type == GatewayPacketType.Hello) {
                 Logger.Info("Server says hello!");
-                await SendIdentityPacket();
+                SendIdentityPacket();
             } else if (type == GatewayPacketType.Heartbeat) {
-                await SendHeartBeat();
+                SendHeartBeat();
             } else if (type == GatewayPacketType.HeartbeatACK) {
 
             } else if (type == GatewayPacketType.InvalidSession) {
@@ -160,7 +160,7 @@ namespace CSFCloud.DiscordCore.Socket {
                         }
                     }
                 } else {
-                    Logger.Info($"Unknown event: {EventType}");
+                    Logger.Debug($"Unknown event: {EventType}");
                 }
             }
         }
@@ -192,7 +192,7 @@ namespace CSFCloud.DiscordCore.Socket {
             return words.ToArray();
         }
 
-        private async Task SendIdentityPacket() {
+        private void SendIdentityPacket() {
             string game = null;
             foreach (Processor p in processors) {
                 string t = p.GetGameName();
@@ -202,16 +202,16 @@ namespace CSFCloud.DiscordCore.Socket {
             }
 
             BasicPacket packet = new Identify(this.token, game, shardId, shardCount);
-            await Send(packet);
+            Send(packet);
         }
 
         public int GetGuildCount() {
             return guilds.Count;
         }
 
-        protected override async Task SendHeartBeat() {
+        protected override void SendHeartBeat() {
             BasicPacket packet = new HeartBeat();
-            await Send(packet);
+            Send(packet);
         }
 
     }

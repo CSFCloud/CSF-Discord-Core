@@ -26,13 +26,13 @@ namespace CSFCloud.DiscordCore.Socket {
             this.userId = userId;
         }
 
-        protected override async void PacketRecieved(string packetstr) {
+        protected override void PacketRecieved(string packetstr) {
             VoicePacket packet = new VoicePacket(packetstr);
             VoicePacketType type = packet.GetPacketType();
 
             if (type == VoicePacketType.Hello) {
                 Logger.Info("Voice server says hello!");
-                await SendIdentityPacket();
+                SendIdentityPacket();
             } else if (type == VoicePacketType.Ready) {
                 readyData = packet.GetData<VoiceChannelReady>();
 
@@ -41,7 +41,7 @@ namespace CSFCloud.DiscordCore.Socket {
                     stream.Connect();
 
                     BasicPacket spacket = new SelectProtocol(readyData.ip, readyData.port);
-                    await Send(spacket);
+                    Send(spacket);
                 } catch (Exception e) {
                     Logger.Error($"AudioStream connection error: {e.Message}");
                     Disconnect();
@@ -57,18 +57,18 @@ namespace CSFCloud.DiscordCore.Socket {
             }
         }
 
-        protected override async Task SendHeartBeat() {
+        protected override void SendHeartBeat() {
             BasicPacket packet = new HeartBeat();
-            await Send(packet);
+            Send(packet);
         }
 
         public void ChangeChannel(string channelID) {
 
         }
 
-        private async Task SendIdentityPacket() {
+        private void SendIdentityPacket() {
             BasicPacket packet = new Identify(serverId, sessionId, token, userId);
-            await Send(packet);
+            Send(packet);
         }
 
     }

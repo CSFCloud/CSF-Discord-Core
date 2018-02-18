@@ -14,6 +14,7 @@ namespace CSFCloud.DiscordCore {
         private string token;
         private List<Processor> processors = new List<Processor>();
         private List<MainSocket> shards = new List<MainSocket>();
+        private bool started = false;
 
         public Client(string token) {
             this.token = token;
@@ -46,6 +47,8 @@ namespace CSFCloud.DiscordCore {
                 foreach (MainSocket ms in shards) {
                     await ms.Connect();
                 }
+
+                started = true;
             } catch (Exception e) {
                 Logger.Error($"Server startup failed: {e.Message}");
             }
@@ -67,14 +70,17 @@ namespace CSFCloud.DiscordCore {
             }
         }
 
-        public async Task ConnectToChannel(string guildId, string channelId) {
+        public void ConnectToChannel(string guildId, string channelId) {
             BasicPacket packet = new VoiceStateUpdate(guildId, channelId);
             foreach (MainSocket ms in shards) {
-                await ms.Send(packet);
+                ms.Send(packet);
             }
         }
 
         public bool IsEverythingOK() {
+            if (!started) {
+                return true;
+            }
             foreach (MainSocket ms in shards) {
                 if (!ms.IsOk()) {
                     return false;

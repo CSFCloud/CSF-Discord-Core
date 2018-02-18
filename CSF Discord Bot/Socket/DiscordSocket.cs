@@ -13,6 +13,7 @@ namespace CSFCloud.DiscordCore.Socket {
         private ClientWebSocket client;
         private Uri serverUri;
         private List<Looper> loops = new List<Looper>();
+        private List<BasicPacket> sendBuffer = new List<BasicPacket>();
         protected int HeartBeatInterval = 30000;
 
         public DiscordSocket(Uri url) {
@@ -38,7 +39,7 @@ namespace CSFCloud.DiscordCore.Socket {
             loops.Add(l1);
 
             Looper l2 = new Looper(HeartBeatInterval, HeartBeatInterval);
-            l2.SetLoopFunction(SendHeartBeat);
+            l2.SetLoopAction(SendHeartBeat);
             loops.Add(l2);
 
             foreach (Looper loop in loops) {
@@ -66,7 +67,7 @@ namespace CSFCloud.DiscordCore.Socket {
             loops.Clear();
         }
 
-        public async Task Send(BasicPacket packet) {
+        private async Task RealSend(BasicPacket packet) {
             if (client.State != WebSocketState.Open) {
                 Logger.Error($"[Send] Invalid socket state: {client.State}");
                 Disconnect();
@@ -81,11 +82,21 @@ namespace CSFCloud.DiscordCore.Socket {
             Logger.Debug($"Packet sent {str}");
         }
 
+        public void Send(BasicPacket packet) {
+            sendBuffer.Add(packet);
+        }
+
         public async Task<string> Receive() {
             if (client.State != WebSocketState.Open) {
                 Logger.Error($"[Receive] Invalid socket state: {client.State}");
                 Disconnect();
                 return null;
+            }
+
+            int l = sendBuffer.Count;
+            for (int i = 0; i < l; i++) {
+                await RealSend(sendBuffer[0]);
+                sendBuffer.RemoveAt(0);
             }
 
             string data = "";
@@ -94,12 +105,11 @@ namespace CSFCloud.DiscordCore.Socket {
             Logger.Debug($"Receiving...");
 
             do {
-                Logger.Debug("...");
-                var buffer = new byte[1024];
+                var buffer = new byte[1024 * 32];
                 try {
                     result = await client.ReceiveAsync(new ArraySegment<byte>(buffer), CancellationToken.None);
                 } catch (Exception e) {
-                    Logger.Error($"[Receive] ReceiveAsync error: {e.Message} {e.Source}");
+                    Logger.Error($"[Receive] ReceiveAsync error: {e.Message} {e.Source} {string.Join(" ", buffer)}");
                     Disconnect();
                     return null;
                 }
@@ -127,7 +137,7 @@ namespace CSFCloud.DiscordCore.Socket {
             return (client.State == WebSocketState.Open) || (client.State == WebSocketState.Connecting);
         }
 
-        protected abstract Task SendHeartBeat();
+        protected abstract void SendHeartBeat();
 
         protected abstract void PacketRecieved(string packetstr);
 
