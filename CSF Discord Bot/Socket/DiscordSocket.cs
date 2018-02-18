@@ -33,7 +33,7 @@ namespace CSFCloud.DiscordCore.Socket {
             }
             Logger.Info($"Connected!");
 
-            Looper l1 = new Looper(0, 0);
+            Looper l1 = new Looper(0, 10);
             l1.SetLoopFunction(ListenerLoop);
             loops.Add(l1);
 

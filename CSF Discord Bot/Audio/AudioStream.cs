@@ -29,7 +29,7 @@ namespace CSFCloud.DiscordCore.Audio {
             socket.Connect(ip, port);
             Logger.Info($"Audio stream connected [{socket.Client.SocketType}]");
 
-            Looper l1 = new Looper(0, 0);
+            Looper l1 = new Looper(0, 10);
             l1.SetLoopFunction(ListenerLoop);
             loops.Add(l1);
 
