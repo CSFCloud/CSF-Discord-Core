@@ -109,7 +109,7 @@ namespace CSFCloud.DiscordCore.Socket {
                 try {
                     result = await client.ReceiveAsync(new ArraySegment<byte>(buffer), CancellationToken.None);
                 } catch (Exception e) {
-                    Logger.Error($"[Receive] ReceiveAsync error: {e.Message} {e.Source} {string.Join(" ", buffer)}");
+                    Logger.Error($"[Receive] ReceiveAsync error: {e.Message} {e.Source}");
                     Disconnect();
                     return null;
                 }
