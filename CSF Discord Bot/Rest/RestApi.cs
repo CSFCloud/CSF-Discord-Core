@@ -1,6 +1,8 @@
-﻿using Newtonsoft.Json;
+﻿using CSFCloud.Utils;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
+using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.IO;
 using System.Linq;
@@ -15,19 +17,23 @@ namespace CSFCloud.DiscordCore.Rest {
     public abstract class RestApi {
 
         protected string baseurl = "https://discordapp.com/api/";
-        protected string api_name = "";
-        protected RestApiMethod method = RestApiMethod.GET;
         public string token;
 
         public RestApi(string token) {
             this.token = token;
+            Logger.Debug($"RestApi token: {token}");
         }
 
-        protected T Execute<T>(NameValueCollection data) {
+        protected T Execute<T>(RestApiMethod method, string api_name, NameValueCollection data = null) {
             string response = "";
+            if (data == null) {
+                data = new NameValueCollection();
+            }
 
             if (method == RestApiMethod.GET) {
                 string uri = baseurl + api_name + "?" + ToQueryString(data);
+
+                Logger.Debug($"GET {uri}");
 
                 WebRequest request = WebRequest.Create(uri);
                 request.Method = "GET";
@@ -38,14 +44,16 @@ namespace CSFCloud.DiscordCore.Rest {
                 StreamReader reader = new StreamReader(st);
                 response = reader.ReadToEnd();
 
-            } else if (method == RestApiMethod.POST) {
+            } else {
                 string uri = baseurl + api_name;
-                string postData = ToQueryString(data);
+                string postData = ToJsonString(data);
+
+                Logger.Debug($"POST {uri}");
 
                 WebRequest request = WebRequest.Create(uri);
-                request.Method = "POST";
+                request.Method = method.ToString();
                 request.Headers.Add("Authorization", "Bot " + token);
-                request.ContentType = "application/x-www-form-urlencoded";
+                request.ContentType = "application/json";
                 byte[] byteArray = Encoding.UTF8.GetBytes(postData);
                 request.ContentLength = byteArray.Length;
                 Stream dataStream = request.GetRequestStream();
@@ -69,8 +77,18 @@ namespace CSFCloud.DiscordCore.Rest {
             return string.Join("&", array);
         }
 
+        private static string ToJsonString(NameValueCollection nvc) {
+            Dictionary<string, string> dictdata = new Dictionary<string, string>();
+
+            foreach (string key in nvc.AllKeys) {
+                dictdata[key] = nvc[key];
+            }
+
+            return JsonConvert.SerializeObject(dictdata);
+        }
+
         protected enum RestApiMethod {
-            GET, POST
+            GET, POST, PUT, PATCH, DELETE
         }
     }
 

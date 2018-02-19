@@ -1,6 +1,8 @@
-﻿namespace CSFCloud.DiscordCore.Management {
+﻿using CSFCloud.DiscordCore.Rest;
 
-    public class Guild {
+namespace CSFCloud.DiscordCore.Management {
+
+    public class Guild : IToken {
 
         public int verification_level;
         public bool unavailable;
@@ -17,6 +19,13 @@
         public string icon;
         public Channel[] channels;
 
+        private string token;
+        public GuildAPIs API;
+
+        public void SetToken(string token) {
+            this.token = token;
+            API = new GuildAPIs(token, id);
+        }
     }
 
 }

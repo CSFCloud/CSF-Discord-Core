@@ -166,25 +166,30 @@ namespace CSFCloud.DiscordCore.Socket {
         }
 
         public Channel GetChannel(string channel_id) {
-            foreach (Guild guild in guilds) {
-                foreach (Channel channel in guild.channels) {
-                    if (channel.id == channel_id) {
-                        return channel;
-                    }
-                }
-            }
-            return new Channel();
+            (Guild g, Channel c) = GetGuildAndChannel(channel_id);
+            return c;
         }
 
         public (Guild, Channel) GetGuildAndChannel(string channel_id) {
+            Guild g = new Guild();
+            Channel c = new Channel() {
+                id = channel_id,
+                type = ChannelType.DM
+            };
+
             foreach (Guild guild in guilds) {
                 foreach (Channel channel in guild.channels) {
                     if (channel.id == channel_id) {
-                        return (guild, channel);
+                        g = guild;
+                        c = channel;
                     }
                 }
             }
-            return (new Guild(), new Channel());
+
+            g.SetToken(token);
+            c.SetToken(token);
+
+            return (g, c);
         }
 
         private string[] SplitString(string str) {

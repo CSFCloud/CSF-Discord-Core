@@ -26,7 +26,7 @@ namespace CSFCloud.DiscordCore.Socket.Packets.GatewayPackets {
                 ["$device"] = "CSFCloud"
             };
             public bool compress = false;
-            public int large_threshold = 250;
+            public int large_threshold = 100;
             public int[] shard = new int[2] { 0, 1 };
             public IdentityPresence presence = new IdentityPresence();
         }

@@ -1,6 +1,8 @@
-﻿namespace CSFCloud.DiscordCore.Management {
+﻿using CSFCloud.DiscordCore.Rest;
 
-    public class Channel {
+namespace CSFCloud.DiscordCore.Management {
+
+    public class Channel : IToken {
 
         public int user_limit;
         public ChannelType type;
@@ -9,6 +11,13 @@
         public string id;
         public int bitrate;
 
+        private string token;
+        public ChannelAPIs API = null;
+
+        public void SetToken(string token) {
+            this.token = token;
+            API = new ChannelAPIs(token, id);
+        }
     }
 
 }
