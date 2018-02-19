@@ -5,7 +5,7 @@
 	<PackageId>CSFCloud.DiscordBotCore</PackageId>
 	<Title>CSFCloud Discord Bot Core</Title>
 	<Description>Discord Bot frameword</Description>
-	<Version>0.1.1-beta</Version>
+	<Version>0.2.0-beta</Version>
 	<Authors>CSFCloud</Authors>
 	<Company>CSFCloud</Company>
 	<PackageIconUrl>https://dashboard.csfcloud.com/img/logo.png</PackageIconUrl>
@@ -19,7 +19,7 @@
 
   <ItemGroup>
     <PackageReference Include="CSFCloud.Utils" Version="0.0.5" />
-    <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
+    <PackageReference Include="Newtonsoft.Json" Version="11.0.1" />
   </ItemGroup>
 
 </Project>
