@@ -16,8 +16,12 @@ namespace CSFCloud.DiscordCore {
         private List<MainSocket> shards = new List<MainSocket>();
         private bool started = false;
 
-        public Client(string token) {
-            this.token = token;
+        public Client(string token = null) {
+            if (token != null) {
+                this.token = token;
+            } else {
+                this.token = Environment.GetEnvironmentVariable("BOT_TOKEN");
+            }
         }
 
         public void AddProcessor(Processor p) {
